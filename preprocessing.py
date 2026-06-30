@@ -78,3 +78,68 @@ class Preprocessing:
             y[train_idx],
             y[test_idx]
         )
+
+class BaseEstimator:
+    def __init__(self):
+        self.is_fitted_ = False
+    
+    def get_is_fitted(self):
+        if not self.is_fitted_:
+            raise ValueError(
+                "Estimator has not been fitted yet."
+            )
+
+
+class StandardScaler(BaseEstimator):
+
+    def __init__(self):
+        super().__init__()
+        self.mean_ = None
+        self.std_ = None
+        self.n_features_ = None
+
+    def fit(self, X):
+
+        self.is_fitted_ = True
+
+        X = np.asarray(X)
+
+        sample = len(X)
+
+        self.n_features_ = X.shape[1]
+
+        self.mean_ = np.mean(X, axis=0)
+
+        self.std_ = np.std(X, axis=0)
+
+    def transform(self, X):
+
+        self.get_is_fitted()
+        
+        X = np.asarray(X)
+
+        mean = self.mean_
+        std = self.std_
+
+        up = X - mean
+
+        z = up / std
+
+        return z
+    
+    def fit_transform(self, X):
+
+        self.fit(X)
+
+        return self.transform(X)
+    
+    def inverse_transform(self, X_scaled):
+
+        self.get_is_fitted()
+        
+        X_scaled = np.asarray(X_scaled)
+        
+        X = X_scaled*self.std_ + self.mean_
+
+        return X
+
