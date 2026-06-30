@@ -1,13 +1,18 @@
 import numpy as np
+from abc import ABC, abstractmethod
 
+class Process(ABC):
 
-class Preprocessing:
+    @abstractmethod
+    def __call__(self, X,y,test_size=0.2,shuffle=True,random_state=42,train_size=None):
+        pass
+
+class Preprocessing(Process):
 
     def __init__(self):
         pass
 
-    def train_test_split(self,X,y,test_size=0.2,shuffle=True,random_state=42,train_size=None):
-
+    def __call__(self, X, y, test_size=0.2, shuffle=True, random_state=42, train_size=None):
         """
     Split arrays into random train and test subsets.
 

@@ -1,5 +1,5 @@
 import numpy as np
-from ..preprocessing import Preprocessing, StandardScaler
+from ..utils.preprocessing import Preprocessing, StandardScaler
 # from sklearn.model_selection import train_test_split
 
 X = np.array([

@@ -1,6 +1,6 @@
 import numpy as np
 
-from ..losses import (
+from ..utils.losses import (
     MSELoss,
     MAELoss,
     BinaryCrossEntropy,
