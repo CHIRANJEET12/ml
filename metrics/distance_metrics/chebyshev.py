@@ -8,9 +8,9 @@ class Chebyshev(Minkowski):
     def __init__(self):
         pass
 
-    def __call__(self, X_train, y_train):
+    def __call__(self, X_train, X_test):
 
-        X_train, y_train = Validate.validate(X_train, y_train)
+        X_train, X_test = Validate.validate(X_train, X_test)
 
-        return np.sqrt(np.sum((X_train - y_train) ** 2))
+        return np.max(np.abs(X_train - X_test), axis=1)
         
