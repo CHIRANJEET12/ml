@@ -11,8 +11,16 @@ from .recall import Recall
 from .rmse import RMSE, Root_Mean_Squared_Error
 from .roc import ROC
 from .roc_auc import ROC_AUC, ROCAUC
+from .distance_metrics.chebyshev import Chebyshev
+from .distance_metrics.euclidean import Euclidean
+from .distance_metrics.manhattan import Manhattan
+from .distance_metrics.minkowski import Minkowski
 
 __all__ = [
+    "Minkowski",
+    "Euclidean",
+    "Manhattan",
+    "Chebyshev",
     "Accuracy",
     "Adjusted_R2_Score",
     "Binary_Log_Loss",
