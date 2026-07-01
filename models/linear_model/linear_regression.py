@@ -1,6 +1,6 @@
 import numpy as np
 from metrics.r2_score import (R2_score, Adjusted_R2_Score)
-
+from models.helper._helper import as_matching_arrays
 
 
 class LinearRegression:
@@ -14,8 +14,7 @@ class LinearRegression:
     
     def fit(self, X_train, y_train):
 
-        X_train = np.asarray(X_train, dtype=np.float64)
-        y_train = np.asarray(y_train, dtype=np.float64)
+        X_train, y_train = as_matching_arrays(X_train, y_train, dtype=np.float64)
 
         self.n_samples, self.n_features = X_train.shape
 
